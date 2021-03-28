@@ -1,5 +1,6 @@
 package com.example.instagramclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,6 +64,8 @@ public class Sign extends AppCompatActivity {
                     public void done(ParseUser user, ParseException e) {
                         if( user !=null && e==null)  {
                             FancyToast.makeText(Sign.this,"LogIn success", FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
+                            Intent intent = new Intent(Sign.this ,Welcome.class ) ;
+                            startActivity(intent);
 
                         }
 
