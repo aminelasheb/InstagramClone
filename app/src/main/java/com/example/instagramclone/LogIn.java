@@ -92,10 +92,12 @@ public class LogIn extends AppCompatActivity {
 
 
     }
-
+// hiding the keybord
     public void click(View view) {
+        try {
         InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE) ;
-        input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0) ;
+        input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0) ; }
+        catch (Exception e) {e.printStackTrace();}
     }
 
 

@@ -83,7 +83,9 @@ public class SignUp extends AppCompatActivity {
     }
 
     public void signUpClick(View view) {
-        InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE) ;
-        input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0) ;
+        try {
+            InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE) ;
+            input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0) ; }
+        catch (Exception e) {e.printStackTrace();}
     }
-}
+    }
