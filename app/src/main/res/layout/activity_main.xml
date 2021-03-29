@@ -5,9 +5,12 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sign">
+    tools:context=".LogIn"
+    android:background="#7e57c2">
+
 
     <EditText
+        android:textColor="@color/white"
         android:id="@+id/edtUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,6 +18,7 @@
         android:layout_marginBottom="401dp"
         android:ems="10"
         android:hint="Enter username"
+        android:textColorHint="@color/white"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +26,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-
+        android:textColor="@color/white"
         android:id="@+id/edtPassword"
+        android:textColorHint="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="330dp"
@@ -38,46 +43,51 @@
 
     <Button
         android:id="@+id/SignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="397dp"
-        android:layout_marginEnd="227dp"
+        android:layout_width="395dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="163dp"
+        android:background="@color/blue"
         android:text="SignUp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="397dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="286dp"
+
+        android:layout_width="400dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="26dp"
+        android:background="@color/yellow"
         android:text="LogIn"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/SignUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="69dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="171dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="171dp"
+        android:layout_width="400dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="168dp"
         android:layout_marginBottom="482dp"
+        android:alpha="1"
+        android:src="@drawable/instalogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

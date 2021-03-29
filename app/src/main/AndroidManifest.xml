@@ -13,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstagramClone">
-        <activity android:name=".Welcome"></activity>
-        <activity android:name=".Sign">
+        <activity android:name=".SignUp"></activity>
+        <activity android:name=".Welcome" />
+        <activity android:name=".LogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
