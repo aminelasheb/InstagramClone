@@ -19,19 +19,19 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class SignUp extends AppCompatActivity {
 
-    private EditText EdtUserNameSign ,EdtPasswordSign , EdtEmailSign ;
-    private Button SignUpp ,Loginn ;
+    private EditText EdtUserNameSign, EdtPasswordSign, EdtEmailSign;
+    private Button SignUpp, Loginn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        EdtUserNameSign = findViewById(R.id.edtUserNameSign) ;
-        EdtPasswordSign = findViewById(R.id.edtPasswordSign) ;
-        EdtEmailSign = findViewById(R.id.edtUserMail) ;
-        SignUpp = findViewById(R.id.SignUpp) ;
-        Loginn = findViewById(R.id.loginn) ;
+        EdtUserNameSign = findViewById(R.id.edtUserNameSign);
+        EdtPasswordSign = findViewById(R.id.edtPasswordSign);
+        EdtEmailSign = findViewById(R.id.edtUserMail);
+        SignUpp = findViewById(R.id.SignUpp);
+        Loginn = findViewById(R.id.loginn);
 
         SignUpp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,35 +39,39 @@ public class SignUp extends AppCompatActivity {
                 try {
 
                     if (EdtUserNameSign.getText().toString().equals("") || EdtEmailSign.getText().toString().equals("")
-                    || EdtPasswordSign.getText().toString().equals("")) {
-                        FancyToast.makeText(SignUp.this,"Empty fields", FancyToast.LENGTH_LONG,FancyToast.INFO,true).show(); }
-                    else {
+                            || EdtPasswordSign.getText().toString().equals("")) {
+                        FancyToast.makeText(SignUp.this, "Empty fields", FancyToast.LENGTH_LONG, FancyToast.INFO, true).show();
+                    } else {
 
-                    ParseUser appUser = new ParseUser() ;
-                appUser.setUsername(EdtUserNameSign.getText().toString());
-                appUser.setPassword(EdtPasswordSign.getText().toString());
-                appUser.setEmail(EdtEmailSign.getText().toString());
+                        final ParseUser appUser = new ParseUser();
+                        appUser.setUsername(EdtUserNameSign.getText().toString());
+                        appUser.setPassword(EdtPasswordSign.getText().toString());
+                        appUser.setEmail(EdtEmailSign.getText().toString());
 
-                //ProgressDialog
-                    ProgressDialog progressDialog = new ProgressDialog(SignUp.this ) ;
-                    progressDialog.setMessage("SignIn Up " + EdtUserNameSign.getText().toString());
-                    progressDialog.show() ;
+                        //ProgressDialog
+                        final ProgressDialog progressDialog = new ProgressDialog(SignUp.this);
+                        progressDialog.setMessage("SignIn Up " + EdtUserNameSign.getText().toString());
+                        progressDialog.show();
 
-                appUser.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if(e==null) {
-                            FancyToast.makeText(SignUp.this,"SignUp success", FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
-                        }
+                        appUser.signUpInBackground(new SignUpCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                if (e == null) {
+                                    FancyToast.makeText(SignUp.this, "SignUp success", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+                                    transitionSocialMediaActivity();
 
-                        else {  FancyToast.makeText(SignUp.this,e.getMessage(), FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
+                                } else {
+                                    FancyToast.makeText(SignUp.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
 
-                        }  progressDialog.dismiss() ;
+                                }
+                                progressDialog.dismiss();
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                    FancyToast.makeText(SignUp.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
+                    Log.i("TAG", "onClick: " + e.getMessage());
                 }
-                   }  )  ;
-            }} catch(Exception e) {
-                    FancyToast.makeText(SignUp.this,e.getMessage(), FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
-                    Log.i("TAG", "onClick: "+e.getMessage());}
 
             }
         });
@@ -75,8 +79,8 @@ public class SignUp extends AppCompatActivity {
         Loginn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this ,LogIn.class) ;
-                startActivity(intent) ;
+                Intent intent = new Intent(SignUp.this, LogIn.class);
+                startActivity(intent);
 
             }
         });
@@ -84,8 +88,17 @@ public class SignUp extends AppCompatActivity {
 
     public void signUpClick(View view) {
         try {
-            InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE) ;
-            input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0) ; }
-        catch (Exception e) {e.printStackTrace();}
+            InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    private void transitionSocialMediaActivity() {
+        Intent intent = new Intent(SignUp.this, SocialMedia.class);
+        startActivity(intent);
+
+
     }
+}

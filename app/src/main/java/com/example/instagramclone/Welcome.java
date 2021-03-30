@@ -26,11 +26,13 @@ public class Welcome extends AppCompatActivity {
     }
 
     public void logout(View view) {
+        if ( ParseUser.getCurrentUser() != null )
+        {
         ParseUser.logOut();
         FancyToast.makeText(Welcome.this,"LogOut Success", FancyToast.LENGTH_LONG,FancyToast.INFO,true).show();
 
         Intent intent = new Intent(Welcome.this ,LogIn.class) ;
-        startActivity(intent) ;
+        startActivity(intent) ; }
 
 
     }

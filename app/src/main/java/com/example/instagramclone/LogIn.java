@@ -22,27 +22,26 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class LogIn extends AppCompatActivity {
 
-    private EditText EdtUserName ,EdtPassword ;
-    private Button SignUp ,Login ;
+    private EditText EdtUserName, EdtPassword;
+    private Button SignUp, Login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EdtUserName = findViewById(R.id.edtUserName) ;
-        EdtPassword = findViewById(R.id.edtPassword) ;
-        Login = findViewById(R.id.login) ;
-        SignUp = findViewById(R.id.SignUp) ;
+        EdtUserName = findViewById(R.id.edtUserName);
+        EdtPassword = findViewById(R.id.edtPassword);
+        Login = findViewById(R.id.login);
+        SignUp = findViewById(R.id.SignUp);
 
         SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LogIn.this ,SignUp.class ) ;
-                startActivity(intent) ;
+                Intent intent = new Intent(LogIn.this, SignUp.class);
+                startActivity(intent);
             }
         });
-
 
 
 //        SignUp.setOnClickListener(new View.OnClickListener() {
@@ -72,15 +71,15 @@ public class LogIn extends AppCompatActivity {
                 ParseUser.logInInBackground(EdtUserName.getText().toString(), EdtPassword.getText().toString(), new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {
-                        if( user !=null && e==null)  {
-                            FancyToast.makeText(LogIn.this,"LogIn success", FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
-                            Intent intent = new Intent(LogIn.this ,Welcome.class ) ;
-                            startActivity(intent);
+                        if (user != null && e == null) {
+                            FancyToast.makeText(LogIn.this, "LogIn success", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
+//                            Intent intent = new Intent(LogIn.this, Welcome.class);
+//                            startActivity(intent);
 
-                        }
+                            transitionSocialMediaActivity () ;
 
-                        else {
-                            FancyToast.makeText(LogIn.this,e.getMessage(), FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
+                        } else {
+                            FancyToast.makeText(LogIn.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
 
                         }
 
@@ -92,12 +91,15 @@ public class LogIn extends AppCompatActivity {
 
 
     }
-// hiding the keybord
+
+    // hiding the keybord
     public void click(View view) {
         try {
-        InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE) ;
-        input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0) ; }
-        catch (Exception e) {e.printStackTrace();}
+            InputMethodManager input = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            input.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -114,5 +116,10 @@ public class LogIn extends AppCompatActivity {
          });
     }*/
 
+   private void transitionSocialMediaActivity () {
+Intent intent = new Intent(LogIn.this ,SocialMedia.class) ;
+startActivity(intent) ;
 
-    }
+
+   }
+}
