@@ -30,7 +30,8 @@ public class tabAdapter extends FragmentPagerAdapter {
             case (2):
                 SharePictureTab sharePictureTab = new SharePictureTab();
                 return sharePictureTab;
-            default:return null ;
+            default:
+                return null;
         }
     }
 
@@ -43,10 +44,14 @@ public class tabAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
-            case(0) : return "Profile ";
-            case(1): return "Users";
-            case(2) : return "Share Pictures";
-            default:return null ;
+            case (0):
+                return "Profile ";
+            case (1):
+                return "Users";
+            case (2):
+                return "Share Pictures";
+            default:
+                return null;
         }
     }
 }
