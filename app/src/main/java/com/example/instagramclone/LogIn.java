@@ -119,6 +119,7 @@ public class LogIn extends AppCompatActivity {
    private void transitionSocialMediaActivity () {
 Intent intent = new Intent(LogIn.this ,SocialMedia.class) ;
 startActivity(intent) ;
+finish();
 
 
    }

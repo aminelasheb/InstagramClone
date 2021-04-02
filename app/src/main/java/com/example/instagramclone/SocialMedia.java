@@ -77,6 +77,13 @@ public class SocialMedia extends AppCompatActivity {
                 getChosenImage();
             }
         }
+        else if (item.getItemId()==R.id.logoutUserItem) {
+            ParseUser.getCurrentUser().logOut();
+            finish() ;
+            Intent intent =new  Intent(SocialMedia.this ,LogIn.class) ;
+            startActivity(intent);
+
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -106,12 +113,12 @@ public class SocialMedia extends AppCompatActivity {
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                 byte[] bytes = byteArrayOutputStream.toByteArray();
-
                 ParseFile parseFile = new ParseFile("img.png", bytes);
                 ParseObject parseObject = new ParseObject("Photo");
                 parseObject.put("Picture", parseFile);
                 parseObject.put("username", ParseUser.getCurrentUser().getUsername());
                 final ProgressDialog dialog = new ProgressDialog(this);
+                dialog.setMessage("Loading");
                 dialog.show();
                 parseObject.saveInBackground(new SaveCallback() {
                     @Override
@@ -122,7 +129,7 @@ public class SocialMedia extends AppCompatActivity {
                             FancyToast.makeText(SocialMedia.this, e.getMessage(), FancyToast.LENGTH_LONG, FancyToast.ERROR, true).show();
                         }
 
-                    dialog.dismiss() ;} }
+                    dialog.dismiss() ; } }
                 );
 
                 } catch(Exception e){
